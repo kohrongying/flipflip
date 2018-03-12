@@ -6,3 +6,5 @@ testing only wah falling asleep so rubbishh.
 - [ ] Implmeent multiple levels
 - [ ] Improve UX - flipping of card
 - [ ] put more css
+- [ ] Implement Timer
+- [ ] Change to VUe.js
