@@ -20,35 +20,52 @@ $(document).ready(function(){
 			name: 'hard'
 		}
 	}
-	let playingCards = [];
-	let score = 0;
-	const colors = ['red', 'black'];
-	let numbers = ['1', '2', '3', '4', '5', '6', '7', '8','9', '10', 'J', 'Q', 'K'];
+	
+	const allPairings = () => {
+		const colors = ['red', 'black'];
+		const numbers = ['1', '2', '3', '4', '5', '6', '7', '8','9', '10', 'J', 'Q', 'K'];
+		arr=[]
+		for (let i=0;i<numbers.length;i++){
+			for (let j=0; j<colors.length; j++){
+				arr.push([numbers[i], colors[j]]);
+			}
+		}
+		return arr;
+	
+	}
+
 	const initialisePositions = (numOfPairs) => {
 		let arr = Array.apply(null, Array(numOfPairs*2));
 		return arr.map(function(x,i){ return String(i) });
 	}
+	
+	// GLOBAL VARIABLES
+	let playingCards = [];
+	let score = 0;
 	let numClicks = 0;
 
 	const setUp = (numOfPairs) => {
+		numClicks = 0;
+		score = 0;
+		playingCards = [];
+
 		let cards = [];
 		let pos = initialisePositions(numOfPairs);
+		let pairs = allPairings();
 
 		for (let i=0; i<numOfPairs; i++) {
-			colors_index = Math.floor(Math.random()*colors.length);
-			numbers_index = Math.floor(Math.random()*numbers.length);
-
+			pairs_index = Math.floor(Math.random()*pairs.length);
 			for (let j=0; j<2; j++) {
 				pos_index = Math.floor(Math.random()*pos.length);
 				let card = {
-					color: colors[colors_index],
-					number: numbers[numbers_index],
+					color: pairs[pairs_index][1],
+					number: pairs[pairs_index][0],
 					position: pos[pos_index]
 				}
 				cards.push(card);
 				pos.splice(pos_index, 1);
 			}
-			numbers.splice(numbers_index, 1);
+			pairs.splice(pairs_index,1);
 		}
 		let sortedByPos = cards.slice(0);
 		sortedByPos.sort(function(a,b) {
@@ -67,6 +84,10 @@ $(document).ready(function(){
 			e.className = "card";
 			body.append(e);		
 		}
+	}
+
+	const clearDOM = () => {
+		$('.card').remove();
 	}
 
 	const checkPair = () => {
@@ -127,7 +148,28 @@ $(document).ready(function(){
 		}
 	})
 
-	const levelChoice = LEVEL.easy;
+	$('#app').on('click', '#level-easy-btn', function(e){
+		e.preventDefault();
+		clearDOM();
+		levelChoice = LEVEL.easy;
+		setUpDOM(levelChoice);
+	})
+
+	$('#app').on('click', '#level-medium-btn', function(e){
+		e.preventDefault();
+		clearDOM();
+		levelChoice = LEVEL.medium;
+		setUpDOM(levelChoice);
+	})
+
+	$('#app').on('click', '#level-hard-btn', function(e){
+		e.preventDefault();
+		clearDOM();
+		levelChoice = LEVEL.hard;
+		setUpDOM(levelChoice);
+	})
+
+	let levelChoice = LEVEL.easy;
 	setUpDOM(levelChoice);
 
 })

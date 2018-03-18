@@ -20,51 +20,56 @@ body {
   background-color: white;
   height: 90%;
   width: 90%;
-  margin: auto; }
+  margin: auto;
+  padding: 20px; }
 
 html, body {
   display: flex;
   justify-content: center;
   align-items: center; }
 
-#app #score-area {
-  text-align: center;
-  font-size: 50px; }
-#app div.card {
-  background: beige;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 68px;
-  color: white; }
-#app [data-color="red"] {
-  background-color: red !important; }
-#app [data-color="black"] {
-  background-color: black !important; }
-#app #cards-area[data-level="easy"] {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-  margin: 0 auto; }
-  #app #cards-area[data-level="easy"] .card {
-    height: 170px;
-    width: 120px; }
-#app #cards-area[data-level="medium"] {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 15px;
-  width: 50%;
-  margin: 0 auto; }
-  #app #cards-area[data-level="medium"] .card {
-    height: 140px; }
-#app #cards-area[data-level="hard"] {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-gap: 5px;
-  width: 60%;
-  margin: 0 auto; }
-  #app #cards-area[data-level="hard"] .card {
-    height: 80px; }
+#app {
+  width: 100%;
+  height: 100%; }
+  #app #opt-area {
+    padding: 20px;
+    text-align: center; }
+  #app div.card {
+    background: beige;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 68px;
+    color: white; }
+  #app [data-color="red"] {
+    background-color: red !important; }
+  #app [data-color="black"] {
+    background-color: black !important; }
+  #app #cards-area[data-level="easy"] {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    width: 50%;
+    margin: 0 auto; }
+    #app #cards-area[data-level="easy"] .card {
+      height: 170px;
+      width: 120px; }
+  #app #cards-area[data-level="medium"] {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 15px;
+    width: 70%;
+    margin: 0 auto; }
+    #app #cards-area[data-level="medium"] .card {
+      height: 140px; }
+  #app #cards-area[data-level="hard"] {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-gap: 5px;
+    width: 80%;
+    margin: 0 auto; }
+    #app #cards-area[data-level="hard"] .card {
+      height: 90px; }
 
 /*# sourceMappingURL=styles.css.map */
