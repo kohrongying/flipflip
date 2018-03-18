@@ -64,65 +64,67 @@ $(document).ready(function(){
 		for (let i=0; i<playingCards.length; i++) {
 			let e = document.createElement('div');
 			e.id = playingCards[i].position;
-			// e.setAttribute('data-color','foo');
 			e.className = "card";
 			body.append(e);		
 		}
 	}
 
-	const checkPair = (cards) => {
+	const checkPair = () => {
+		let cards = $('.open');
 		const first = playingCards[cards[0].id];
 		const second = playingCards[cards[1].id];
 		if (first.color == second.color && first.number == second.number) {
 			return true;
-		} else {
-			return false;
-		}
+		} 
+		return false;
+	}
+
+	const openCard = (thisCard) => {
+		let card = playingCards[thisCard.id];
+		$(thisCard).addClass('open');
+		thisCard.setAttribute('data-color', card.color);
+		$(thisCard).text(card.number);
+	}
+
+	const closeCards = () => {
+		$('.open').each(function(){
+			$(this).removeClass('open');
+			this.removeAttribute('data-color');
+			$(this).text(" ");
+		})
+	}
+
+	const removePair = () => {
+		$('.open').each(function(){
+			$(this).removeClass('open');
+			$(this).css('visibility', 'hidden');
+		})
 	}
 
 	$('#app').on('click', '.card', function(e){
 		e.preventDefault();
 		numClicks++;
-		console.log(numClicks);
-		if (numClicks<2) {
-			// numClicks++;
+		
+		if (numClicks==1) {
+			openCard(this);
 			
 		} else if (numClicks==2) {
-			let card = playingCards[this.id];
-			$(this).addClass('open');
-			this.setAttribute('data-color', card.color);
-			$(this).text(card.number);
+			openCard(this);
 
-			let cards = $('.open');
-			if (checkPair(cards)) {
+			if (checkPair()) {
 				score++;
-			}
-			if (score == levelChoice.count){
-				alert("you solved it!");
-			}
-			return
-		} else {
-			numClicks = 1;
-			let cards = $('.open');
-			if (checkPair(cards)) {
-				$('.open').each(function(){
-					$(this).removeClass('open');
-					$(this).css('visibility', 'hidden');
-				})
-			} else {
-				$('.open').each(function(){
-					$(this).removeClass('open');
-					this.setAttribute('data-color', "foo");
-					$(this).text(" ");
-				})
-			}
-			
-		}
 
-		let card = playingCards[this.id];
-		$(this).addClass('open');
-		this.setAttribute('data-color', card.color);
-		$(this).text(card.number);
+				if (score == levelChoice.count){
+					alert("you solved it!");
+					window.location.href = "index.html";
+				}
+			}
+
+		} else {			
+			numClicks = 1;
+			checkPair() ? removePair() : closeCards()
+			openCard(this);
+		}
 	})
 
 	const levelChoice = LEVEL.easy;
