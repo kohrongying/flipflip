@@ -10,13 +10,9 @@
 
 html {
 	height: 100vh;
-	background: #4ecdc4; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #4ecdc4, #556270); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #4ecdc4, #556270); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 body {
-	background-color: white;
 	height: 90%;
 	width: 90%;
 	margin: auto;
@@ -29,6 +25,12 @@ html, body {
 	align-items: center;
 }
 
+button {
+	border: none;
+	padding: 5px 10px;
+	border-radius: 10px;
+}
+
 #app {
 
 	width: 100%;
@@ -39,8 +41,8 @@ html, body {
 		text-align: center;
 	}
 
-	#cards-area {
-
+	#stopwatch-area {
+		text-align: center;
 	}
 
 	div.card {
@@ -49,8 +51,9 @@ html, body {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 68px;
+		font-size: 56px;
 		color: white;
+		border-radius: 10px;
 	}
 
 	[data-color="red"]{
@@ -78,11 +81,12 @@ html, body {
 		display: grid;
 		grid-template-columns: repeat(6, 1fr);
 		grid-gap: 15px;
-		width: 70%;
+		width: 40%;
 		margin: 0 auto;
 
 		.card {
-			height: 140px;
+			height: 120px;
+			width: 90px;
 		}
 	}
 
@@ -90,11 +94,12 @@ html, body {
 		display: grid;
 		grid-template-columns: repeat(9, 1fr);
 		grid-gap: 5px;
-		width: 80%;
+		width: 55%;
 		margin: 0 auto;
 
 		.card {
-			height: 90px;
+			height: 88px;
+			width: 70px;
 		}
 	}
 	

@@ -2,9 +2,11 @@
 
 testing only wah falling asleep so rubbishh.
 
-- [ ] Play Again button
-- [ ] Implmeent multiple levels
+- [x] Play Again button
+- [x] Implmeent multiple levels
 - [ ] Improve UX - flipping of card
-- [ ] put more css
-- [ ] Implement Timer
-- [ ] Change to VUe.js
+- [ ] Implement Timer to convert to score
+- [ ] Implement Best Score
+- [ ] Change to Vue.js
+- [ ] Enable multiplayer x2
+- [ ] Improve CSS
